@@ -2,7 +2,8 @@
 
 ![image](https://github.com/Krade27/Omada-Captive-Portal-Free/assets/168947395/4fd88928-0b12-4110-ba8a-35359add94df)
 
-**What is this?**
+**About?**
+
 Captive Portal is my customized Omada Controller portal web page. It only use Authentication Type: Hotspot; Hotspot type: Voucher. 
 I made this project available to public to help the others get a free custom portal web page.
 
