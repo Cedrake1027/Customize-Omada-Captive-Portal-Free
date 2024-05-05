@@ -1,0 +1,140 @@
+body {
+	font-family: Arial, sans-serif;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("bg.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	z-index: -1;
+	opacity: 0.8;
+}
+
+.container {
+	position: relative;
+	width: 30%;
+	margin: 100px auto;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, .9);
+	border-radius: 0px 0px 10px 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	min-width: 220px;
+	border-bottom: 30px solid #3872B8;
+}
+
+.greeting-container {
+	position: absolute;
+	top: -50px;
+	left: 0;
+	width: calc(100% - 20px);
+	height: 50px;
+	line-height: 20px;
+	background-color: #3872B8;
+	border-radius: 10px 10px 0px 0px;
+	padding: 0 10px;
+}
+
+h1 {
+	text-align: center;
+	color: #000000;
+}
+
+h3 {
+	text-align: left;
+	color: #ffffff;
+}
+
+p {
+	text-align: left;
+	color: #000000;
+	font-weight: bold;
+}
+
+.input-voucher {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+}
+
+input[type="number"] {
+	width: calc(100% - 22px);
+	padding: 10px 11px;
+	border: 1px solid #ccc;
+	border-radius: 100px;
+	text-align: center;
+	font-size: 21px;
+	font-weight: bolder;
+}
+
+input[type="submit"] {
+	width: 100%;
+	padding: 10px 0;
+	border: none;
+	background-color: #00A74F;
+	color: #fff;
+	border-radius: 100px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+input[type="submit"]:hover {
+	background-color: #009647;
+}
+
+.logo {
+	display: block;
+	margin: 0 auto 20px;
+	width: 150px;
+	height: auto;
+}
+
+.hours {
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 200px) {
+	.hours {
+		white-space: normal;
+	}
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.terms-link {
+	text-decoration: none;
+}
+
+.oper-hint {
+	color: red;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+	/* Firefox */
+}
+
+.hidden {
+	display: none;
+}
