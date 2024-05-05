@@ -19,4 +19,4 @@ Download the entire file file
 Go to your Settings > Authentication > Portal Customization
 In the type: section, check the Import Customized Page checkbox.
 Import the downloaded index.html and click Apply button to apply your changes.
-Note: The custom portal has file limit of 2MB, you can compress your image file without losing quality at imagesmaller.com.
+Note: The custom portal has file limit of 2MB, you can compress your image file without losing quality.
