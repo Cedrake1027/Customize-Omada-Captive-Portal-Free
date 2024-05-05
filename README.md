@@ -14,7 +14,8 @@ Custom interface and events when trying to log in.
 Supports mobile and large screen sizes.
 
 **How to use**
-Download the entire file file
+
+Download the entire file as zip
 
 Go to your Settings > Authentication > Portal Customization
 In the type: section, check the Import Customized Page checkbox.
