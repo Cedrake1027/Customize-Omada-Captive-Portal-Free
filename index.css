@@ -81,7 +81,7 @@ input[type="number"] {
 	font-weight: bolder;
 }
 
-input[type="submit"] {
+#button-login {
 	width: 100%;
 	padding: 10px 0;
 	border: none;
@@ -93,9 +93,10 @@ input[type="submit"] {
 	font-weight: bolder;
 }
 
-input[type="submit"]:hover {
+#button-login:hover {
 	background-color: #009647;
 }
+
 
 .logo {
 	display: block;
