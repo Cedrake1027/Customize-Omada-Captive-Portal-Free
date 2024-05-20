@@ -53,6 +53,7 @@ h1 {
 h3 {
 	text-align: left;
 	color: #ffffff;
+	
 }
 
 p {
@@ -128,6 +129,8 @@ input[type=number]::-webkit-outer-spin-button {
 .oper-hint {
 	color: red;
 	text-align: center;
+	font-size: 10px;
+	font-weight: bolder;
 	margin-bottom: 10px;
 }
 

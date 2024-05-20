@@ -3,12 +3,20 @@ const inputVoucherCode = document.getElementById("voucherCode");
         if (inputVoucherCode.value.length > inputVoucherCode.maxLength)
           inputVoucherCode.value = inputVoucherCode.value.slice(0, inputVoucherCode.maxLength);
 };
-inputVoucherCode.onkeyup = (e) => {
-    if (e.keyCode === 13 || e.keyCode === "Enter") {
-      e.preventDefault();
-      setTimeout(() => document.getElementById("button-login").click(), 1);
+inputVoucherCode.onkeydown = (e) => {
+    if (e.keyCode === 13 || e.keyCode === 9 || e.key === "Enter" || e.key === "Tab") {
+        e.preventDefault();
+        setTimeout(() => {
+            if (e.keyCode === 13 || e.key === "Enter") {
+                document.getElementById("button-login").click();
+            } else if (e.keyCode === 9 || e.key === "Tab") {
+                document.getElementById("button-login").focus();
+            }
+        }, 1);
     }
 };
+
+
 var Ajax = {
     post: function (url, data, fn) {
         var xhr = new XMLHttpRequest();
@@ -42,7 +50,7 @@ var hotspotMap = {
 };
 
 var errorHintMap = {
-    "0": "ok",
+    "0": "",
     "-1": "General error.",
     "-41500": "Invalid authentication type.",
     "-41501": "Failed to authenticate.",
@@ -125,7 +133,30 @@ function getQueryStringAsObject () {
     }
     return r;
 }
+// Function to set the greeting dynamically
+function setGreeting() {
+    // Get the current hour
+    var currentHour = new Date().getHours();
+    
+    // Get the greeting container
+    var greetingContainer = document.getElementById("greeting");
+    
+    // Update the greeting based on the current hour
+    if (currentHour >= 0 && currentHour < 5) {
+        greetingContainer.textContent = "Good Morning! 😴💤";
+    } else if (currentHour >= 5 && currentHour < 12) {
+        greetingContainer.textContent = "Good Morning! 🌞☕";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        greetingContainer.textContent = "Good Afternoon! 🌤️😎";
+    } else {
+        greetingContainer.textContent = "Good Evening! 🌙🥂";
+    }
+}
 
+// Call setGreeting function after the DOM content is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    setGreeting();
+});
 Ajax.post(
     '/portal/getPortalPageSetting',
     JSON.stringify({
@@ -325,6 +356,9 @@ Ajax.post(
             document.getElementById("oper-hint").innerHTML = "Sending Authorization Code...";
         });
         pageConfigParse();
+        
+                // Call setGreeting to set the greeting dynamically
+                setGreeting();
     }
 );
 
