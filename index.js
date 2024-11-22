@@ -1,8 +1,34 @@
+window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+
+    // Add a delay before hiding the preloader
+    setTimeout(function() {
+        preloader.style.display = 'none';
+    }, 1000); // 1-second delay
+
+    // Add event listener to the "CONNECT" button
+    const connectButton = document.getElementById("button-login");
+    connectButton.addEventListener("click", function() {
+        // Show the preloader when the button is clicked
+        preloader.style.display = 'flex';
+
+        // Simulate a connection process
+        setTimeout(function() {
+            // Hide the preloader after the connection process is done
+            preloader.style.display = 'none';
+            // Add your connection logic here
+        }, 3000); // Simulate a 3-second connection process
+    });
+});
+
+
 const inputVoucherCode = document.getElementById("voucherCode");
-      inputVoucherCode.oninput = () => {
-        if (inputVoucherCode.value.length > inputVoucherCode.maxLength)
-          inputVoucherCode.value = inputVoucherCode.value.slice(0, inputVoucherCode.maxLength);
+inputVoucherCode.oninput = () => {
+    if (inputVoucherCode.value.length > inputVoucherCode.maxLength) {
+        inputVoucherCode.value = inputVoucherCode.value.slice(0, inputVoucherCode.maxLength);
+    }
 };
+
 inputVoucherCode.onkeydown = (e) => {
     if (e.keyCode === 13 || e.keyCode === 9 || e.key === "Enter" || e.key === "Tab") {
         e.preventDefault();
@@ -50,7 +76,7 @@ var hotspotMap = {
 };
 
 var errorHintMap = {
-    "0": "",
+    "0": "You're now connected 😉",
     "-1": "General error.",
     "-41500": "Invalid authentication type.",
     "-41501": "Failed to authenticate.",
@@ -373,3 +399,61 @@ document.onkeydown = function (e) {
           return false;
      }
 };
+// Get the modal
+var modal = document.getElementById("terms-modal");
+
+// Get the link that opens the modal
+var link = document.getElementById("terms-link");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the link, open the modal 
+link.onclick = function(event) {
+  event.preventDefault(); // Prevent default link behavior
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            const userLat = position.coords.latitude;
+            const userLon = position.coords.longitude;
+
+            // Define the target location
+            const targetLat = 9.837112618409856;
+            const targetLon = 126.01916546290389;
+
+            // Define an acceptable range (in degrees, roughly ~10-15km radius)
+            const range = 0.15; // Adjust this value to set the radius
+
+            // Check if user is within the range
+            if (
+                Math.abs(userLat - targetLat) <= range &&
+                Math.abs(userLon - targetLon) <= range
+            ) {
+                console.log("Access granted: You are within the allowed location.");
+            } else {
+                document.body.innerHTML = "<h1>Access Denied: Not Available in Your Region</h1>";
+            }
+        },
+        function (error) {
+            console.error("Geolocation error:", error);
+            document.body.innerHTML = "<h1>Access Denied: Unable to Determine Location</h1>";
+        }
+    );
+} else {
+    document.body.innerHTML = "<h1>Access Denied: Geolocation Not Supported</h1>";
+}
