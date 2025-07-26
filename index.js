@@ -1,35 +1,43 @@
-  const connectButton = document.getElementById("button-login");
-  const preloader = document.getElementById("preloader");
+window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    const connectButton = document.getElementById("button-login");
 
-  // Start hidden
-  preloader.style.display = "none";
-
-  connectButton.addEventListener("click", function () {
-    // Show preloader
+    // On page load: show preloader for 1 second
     preloader.style.display = "flex";
-
-    // Optional: Add animation or fade-in
     preloader.style.opacity = "1";
 
-    // Delay 3 seconds
     setTimeout(() => {
+      preloader.style.opacity = "0";
+      preloader.style.display = "none";
+    }, 500); // 1-second page load delay
+
+    // On button click
+    connectButton.addEventListener("click", function () {
+      // Show preloader
+      preloader.style.display = "flex";
+      preloader.style.opacity = "1";
+
+      // Auto-hide preloader after 3 seconds even if fetch is slow
+      setTimeout(() => {
+        preloader.style.opacity = "0";
+        preloader.style.display = "none";
+      }, 2000);
+
+      // Attempt to fetch redirect URL from Google Apps Script
       fetch("https://script.google.com/macros/s/AKfycbwdK79xjtwLvn0aEtopoFSjqQCO9J8a_MZYjB4yicEL6k9nF2RMr0Y4RldihNHWT6YB/exec", { cache: "no-cache" })
         .then(response => {
           if (!response.ok) throw new Error("HTTP error " + response.status);
           return response.text();
         })
         .then(url => {
-          preloader.style.display = "none";
-          window.location.href = url;
+          window.location.href = url; // Redirect on success
         })
         .catch(error => {
           console.error("Fetch failed:", error);
-          preloader.style.display = "none";
-          alert("Something went wrong. Please try again.");
+          window.location.href = "https://maps.google.com"; // Fallback
         });
-    }, 500);
+    });
   });
-
 
 
 const inputVoucherCode = document.getElementById("voucherCode");
