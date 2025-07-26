@@ -1,6 +1,7 @@
 **Free Captive Portal - A Customized Omada Portal Web Page**
 
 <img width="1919" height="870" alt="Screenshot 2025-07-26 224727" src="https://github.com/user-attachments/assets/fd1f059f-956d-4e14-9163-1adc125c7761" />
+<img width="394" height="661" alt="Screenshot 2025-07-26 225303" src="https://github.com/user-attachments/assets/6045acdb-62db-4191-b129-7774336ab370" />
 
 **About**
 
