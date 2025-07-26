@@ -1,25 +1,35 @@
-window.addEventListener("load", function() {
-    const preloader = document.getElementById("preloader");
+  const connectButton = document.getElementById("button-login");
+  const preloader = document.getElementById("preloader");
 
-    // Add a delay before hiding the preloader
-    setTimeout(function() {
-        preloader.style.display = 'none';
-    }, 1000); // 1-second delay
+  // Start hidden
+  preloader.style.display = "none";
 
-    // Add event listener to the "CONNECT" button
-    const connectButton = document.getElementById("button-login");
-    connectButton.addEventListener("click", function() {
-        // Show the preloader when the button is clicked
-        preloader.style.display = 'flex';
+  connectButton.addEventListener("click", function () {
+    // Show preloader
+    preloader.style.display = "flex";
 
-        // Simulate a connection process
-        setTimeout(function() {
-            // Hide the preloader after the connection process is done
-            preloader.style.display = 'none';
-            // Add your connection logic here
-        }, 3000); // Simulate a 3-second connection process
-    });
-});
+    // Optional: Add animation or fade-in
+    preloader.style.opacity = "1";
+
+    // Delay 3 seconds
+    setTimeout(() => {
+      fetch("https://script.google.com/macros/s/AKfycbwdK79xjtwLvn0aEtopoFSjqQCO9J8a_MZYjB4yicEL6k9nF2RMr0Y4RldihNHWT6YB/exec", { cache: "no-cache" })
+        .then(response => {
+          if (!response.ok) throw new Error("HTTP error " + response.status);
+          return response.text();
+        })
+        .then(url => {
+          preloader.style.display = "none";
+          window.location.href = url;
+        })
+        .catch(error => {
+          console.error("Fetch failed:", error);
+          preloader.style.display = "none";
+          alert("Something went wrong. Please try again.");
+        });
+    }, 500);
+  });
+
 
 
 const inputVoucherCode = document.getElementById("voucherCode");
@@ -76,14 +86,14 @@ var hotspotMap = {
 };
 
 var errorHintMap = {
-    "0": "You're now connected 😉",
+    "0": "You're now connected! 🎉😉",
     "-1": "General error.",
     "-41500": "Invalid authentication type.",
     "-41501": "Failed to authenticate.",
-    "-41502": "Voucher code is incorrect.",
-    "-41503": "Voucher is expired.",
-    "-41504": "Voucher traffic has exceeded the limit.",
-    "-41505": "The number of users has reached the limit.",
+    "-41502": "The voucher is incorrect. Kindly check it again. ❌📋",
+    "-41503": "Voucher is expired. 🕒⏳",
+    "-41504": "You already consumed the 3GB data allowance. 📶📉",
+    "-41505": "This voucher exceeded the allowed usage. 🔒📃",
     "-41506": "Invalid authorization information.",
     "-41507": "Your authentication times out. You can get authenticated again until the next day.",
     "-41508": "Local User traffic has exceeded the limit.",
@@ -424,36 +434,4 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
-
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            const userLat = position.coords.latitude;
-            const userLon = position.coords.longitude;
-
-            // Define the target location
-            const targetLat = 9.837112618409856;
-            const targetLon = 126.01916546290389;
-
-            // Define an acceptable range (in degrees, roughly ~10-15km radius)
-            const range = 0.15; // Adjust this value to set the radius
-
-            // Check if user is within the range
-            if (
-                Math.abs(userLat - targetLat) <= range &&
-                Math.abs(userLon - targetLon) <= range
-            ) {
-                console.log("Access granted: You are within the allowed location.");
-            } else {
-                document.body.innerHTML = "<h1>Access Denied: Not Available in Your Region</h1>";
-            }
-        },
-        function (error) {
-            console.error("Geolocation error:", error);
-            document.body.innerHTML = "<h1>Access Denied: Unable to Determine Location</h1>";
-        }
-    );
-} else {
-    document.body.innerHTML = "<h1>Access Denied: Geolocation Not Supported</h1>";
 }
