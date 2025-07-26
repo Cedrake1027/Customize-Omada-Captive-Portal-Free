@@ -1,6 +1,6 @@
 **Free Captive Portal - A Customized Omada Portal Web Page**
 
-![Uploading Screenshot 2025-07-26 224727.png…]()
+<img width="1919" height="870" alt="Screenshot 2025-07-26 224727" src="https://github.com/user-attachments/assets/fd1f059f-956d-4e14-9163-1adc125c7761" />
 
 **About**
 
