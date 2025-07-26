@@ -6,7 +6,7 @@
 **About**
 
 
-This project provides a free, customizable web page for your TP-Link Omada Controller's captive portal. It's designed to work specifically with the "Hotspot" authentication type using vouchers.
+This project provides a free, customizable web page for your TP-Link Omada Controller's captive portal. It's designed to work specifically with the **Hotspot** authentication type using vouchers, with **MAXIMUM 7 DIGITS**.
 
 **Why Choose This?**
 
