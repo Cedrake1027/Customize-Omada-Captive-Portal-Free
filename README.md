@@ -1,8 +1,9 @@
 **Free Captive Portal - A Customized Omada Portal Web Page**
 
-![image](https://github.com/Krade27/Omada-Captive-Portal-Free/assets/168947395/4fd88928-0b12-4110-ba8a-35359add94df)
+![Uploading Screenshot 2025-07-26 224727.png…]()
 
 **About**
+
 
 This project provides a free, customizable web page for your TP-Link Omada Controller's captive portal. It's designed to work specifically with the "Hotspot" authentication type using vouchers.
 
